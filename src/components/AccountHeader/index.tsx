@@ -1,6 +1,7 @@
-import Link from 'next/link';
+import { SignOut } from "phosphor-react";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
 import { IUser } from '../../types/user';
-import { Avatar } from '../Avatar';
 import {
   AccountHeaderContainer,
   AccountHeaderWrapper,
@@ -11,13 +12,18 @@ interface IAccountHeader {
 }
 
 export function AccountHeader({ user }: IAccountHeader) {
+  const { signOut } = useContext(AuthContext);
+
   return (
     <AccountHeaderContainer>
       <AccountHeaderWrapper>
         <div className="logo">
           dev.link
         </div>
-        <Avatar imgURL={user?.avatar} />
+        <span className="sign-out" onClick={signOut}>
+          <p>sing out</p>
+          <SignOut size={24} />
+        </span>
       </AccountHeaderWrapper>
     </AccountHeaderContainer>
   );

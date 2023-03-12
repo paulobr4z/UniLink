@@ -41,7 +41,7 @@ export function ContentProfile({
       {
         user ? (
           <ProfileContent>
-            <Avatar avatar={user.avatar} />
+            <Avatar />
             <ProfileTitle>@{user.username}</ProfileTitle>
             <ProfileBio>{user.bio}</ProfileBio>
             <ProfileLinks>

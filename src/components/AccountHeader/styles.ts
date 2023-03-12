@@ -12,6 +12,7 @@ export const AccountHeaderContainer = styled.div`
 	background-color: #ffffff;
 	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 `;
+
 export const AccountHeaderWrapper = styled.div`
 	display: flex;
 	align-items: center;
@@ -28,5 +29,13 @@ export const AccountHeaderWrapper = styled.div`
 		li {
 			list-style: none;
 		}
+	}
+
+	.sign-out {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
+		cursor: pointer;
 	}
 `;

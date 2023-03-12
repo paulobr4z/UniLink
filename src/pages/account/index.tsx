@@ -3,24 +3,19 @@ import Head from 'next/head'
 import { parseCookies } from 'nookies';
 import { ContentAccount } from '../../contents/account'
 
-interface IAccount {
-  userID: string;
-}
-
-export default function Account({ userID }: IAccount) {
+export default function Account() {
   return (
     <>
       <Head>
         <title>Dev.link | Account</title>
       </Head>
-      <ContentAccount userID={userID} />
+      <ContentAccount />
     </>
   )  
 }
 
 export const getServerSideProps:GetServerSideProps = async (context) => {
   const { ['singlelink.token']: token } = parseCookies(context);
-  const { ['singlelink.userID']: userID } = parseCookies(context);
 
   if (!token) {
     return {
@@ -32,8 +27,6 @@ export const getServerSideProps:GetServerSideProps = async (context) => {
   }
 
   return {
-    props: {
-      userID
-    }
+    props: {}
   }
 }

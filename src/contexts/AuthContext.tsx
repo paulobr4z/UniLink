@@ -4,6 +4,7 @@ import { setCookie, parseCookies, destroyCookie } from 'nookies';
 import { api } from "../services/api";
 import { AxiosError } from "axios";
 import { IUser } from "../types/user";
+import { getAccountByID } from "../services";
 
 interface ICredential {
   email: string;
@@ -12,7 +13,9 @@ interface ICredential {
 
 interface IAuthContext {
   signIn(credentials: ICredential): Promise<void>;
+  signOut: () => void;
   user?: IUser;
+  setUser: (user: IUser) => void;
   isAuthenticated: boolean;
 }
 
@@ -22,23 +25,20 @@ interface IAuthProvider {
 
 export const AuthContext = createContext({} as IAuthContext);
 
-export function signOut() {
-  destroyCookie(undefined, 'singlelink.token')
-
-  Router.push('/');  
-}
-
 export function AuthProvider({ children }: IAuthProvider) {
   const [user, setUser] = useState<IUser>();
   const isAuthenticated = !!user;
 
-  // useEffect(() => {
-  //   const { 'singlelink.token': token } = parseCookies();
+  useEffect(() => {
+    const { 'singlelink.userID': userID } = parseCookies();
 
-  //   if (!token) {
-  //     Router.push('/login');
-  //   }
-  // }, [])
+    async function onGetUser() {
+      const user = await getAccountByID(userID);
+      setUser(user);
+    }
+
+    onGetUser();
+  }, []);
 
   async function signIn({ email, password }: ICredential) {
     try {
@@ -51,8 +51,6 @@ export function AuthProvider({ children }: IAuthProvider) {
 
       const userID = user.id;
 
-      console.log(token, user);
-
       setCookie(undefined, 'singlelink.token', token, {
         maxAge: 60 * 60 * 24, // 24 hours
         path: '/'
@@ -63,19 +61,31 @@ export function AuthProvider({ children }: IAuthProvider) {
         path: '/'
       });
 
-      setUser(user);
-
       api.defaults.headers['Authorization'] = `Bearer ${token}`;
 
       Router.push('/account');
+      const account = await getAccountByID(userID)
+      setUser(account);
     } catch (error) {
       const axiosError = error as AxiosError;
       console.log(axiosError.response?.data);
     }
   }
 
+  function signOut() {
+    destroyCookie(undefined, 'singlelink.token')
+  
+    Router.push('/');  
+  }
+
   return(
-    <AuthContext.Provider value={{ signIn, isAuthenticated, user }}>
+    <AuthContext.Provider value={{
+      signIn,
+      signOut,
+      isAuthenticated,
+      user,
+      setUser
+    }}>
       {children}
     </AuthContext.Provider>
   )
