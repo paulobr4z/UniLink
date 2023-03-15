@@ -23,6 +23,7 @@ export const AccountHeaderWrapper = styled.div`
 
 	.logo a {
 		color: #000000;
+		font-weight: bold;
 	}
 
 	ul {

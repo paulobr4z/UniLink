@@ -6,3 +6,11 @@ export function isValidUrl(url:string) {
     return false;
   }  
 }
+
+export function getHostUrl() {
+  try {
+    return window.location.host;
+  } catch (error) {
+    return false;
+  }  
+}

@@ -10,10 +10,11 @@ import { createLink, deleteLink, updateLinkByID, updateUsernameById } from "../.
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { isValidUrl } from "../../utils";
+import { getHostUrl, isValidUrl } from "../../utils";
 
 export function ContentAccount() {
   const { user, setUser } = useContext(AuthContext);
+  const host = getHostUrl();
 
   async function handleAddNewLink() {
     const update = {...user} as IUser;
@@ -198,7 +199,7 @@ export function ContentAccount() {
       <PreviewContainer>
         <div className="share">
           <a href={`/${user?.username}`} target="_blank" rel="noreferrer">
-            <p>{window.location.href}/{user?.username}</p>
+            <p>{host}/{user?.username}</p>
           </a>
         </div>
         <div className="preview">
