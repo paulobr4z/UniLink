@@ -17,15 +17,6 @@ export default function Home() {
 export const getServerSideProps:GetServerSideProps = async (context) => {
   const { ['singlelink.token']: token } = parseCookies(context);
 
-  if (!token) {
-    return {
-      redirect: {
-        destination: '/login',
-        permanent: false,
-      }
-    }
-  }
-
   if (token) {
     return {
       redirect: {

@@ -61,6 +61,7 @@ export const ContentLoginContainer = styled.div`
       color: #ffffff;
       border-radius: 8px;
       margin-top: 16px;
+      border: none;
     }
   }
 `;

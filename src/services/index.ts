@@ -67,8 +67,6 @@ async function getAccountByID(id: string) {
 async function uploadFile(file: any) {
   try {
     const response = await api.post(UPLOAD_FILE, file);
-
-    console.log(response, UPLOAD_FILE, file);
     
     const { data } = response;
 

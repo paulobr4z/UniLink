@@ -10,6 +10,7 @@ import { createLink, deleteLink, updateLinkByID, updateUsernameById } from "../.
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { isValidUrl } from "../../utils";
 
 export function ContentAccount() {
   const { user, setUser } = useContext(AuthContext);
@@ -46,8 +47,7 @@ export function ContentAccount() {
 
   async function handleDeleteLink(index: number) {
     const update = {...user} as IUser;
-    const response = await deleteLink(update.links[index]._id)
-    console.log(response)
+    await deleteLink(update.links[index]._id);
     delete update.links[index];
     setUser(update);
   }
@@ -79,6 +79,12 @@ export function ContentAccount() {
       link_id: linkID,
       field,
       value: field === 'title' ? title : url
+    }
+
+    const urlValid = isValidUrl(url);
+
+    if (!urlValid) {
+      return toast.error(`invalid url`);
     }
 
     await updateLinkByID(linkInfo);

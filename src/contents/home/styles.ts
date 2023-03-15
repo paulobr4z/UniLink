@@ -27,4 +27,40 @@ export const ContentHomeContainer = styled.div`
       }
     }
   }
+
+  .main-title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 60%;
+    height: 90vh;
+    gap: 16px;
+
+    h1 {
+      font-size: 80px;
+      font-weight: bold;
+      line-height: 96px;
+    }
+
+    button {
+      padding: 16px 32px;
+      background-color: #000000;
+      color: #ffffff;
+      border: none;
+      border-radius: 100px;
+      font-size: 24px;
+    }
+  }
+
+  .main-ilustra {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+
+    img {
+      height: 100%;
+    }
+  }
 `;
