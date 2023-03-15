@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { SignOut } from "phosphor-react";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
@@ -18,10 +19,12 @@ export function AccountHeader({ user }: IAccountHeader) {
     <AccountHeaderContainer>
       <AccountHeaderWrapper>
         <div className="logo">
-          dev.link
+          <Link href="/">
+            UniLink
+          </Link>
         </div>
         <span className="sign-out" onClick={signOut}>
-          <p>sing out</p>
+          <p>log out</p>
           <SignOut size={24} />
         </span>
       </AccountHeaderWrapper>

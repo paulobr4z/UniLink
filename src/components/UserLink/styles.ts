@@ -13,6 +13,7 @@ export const LinkContainer = styled.div<ILinkContainer>`
 	margin-bottom: 16px;
 	border-radius: 8px;
 	background-color: ${({ bg_color_link }) => bg_color_link };
+	border: 1px solid #ffffff;
 
 	a {
 		width: 100%;

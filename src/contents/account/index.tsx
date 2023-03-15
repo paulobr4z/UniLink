@@ -196,6 +196,11 @@ export function ContentAccount() {
         </div>
       </SettingsContainer>
       <PreviewContainer>
+        <div className="share">
+          <a href={`/${user?.username}`} target="_blank" rel="noreferrer">
+            <p>{window.location.href}/{user?.username}</p>
+          </a>
+        </div>
         <div className="preview">
           <Avatar width={80} height={80}/>
           <h4>{`@${user?.username}`}</h4>

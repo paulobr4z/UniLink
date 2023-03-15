@@ -5,7 +5,7 @@ export default function Signup() {
   return (
     <>
       <Head>
-        <title>Dev.link | Signup</title>
+        <title>UniLink | Signup</title>
       </Head>
       <ContentSignup />
     </>

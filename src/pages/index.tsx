@@ -15,16 +15,16 @@ export default function Home() {
 }
 
 export const getServerSideProps:GetServerSideProps = async (context) => {
-  const { ['singlelink.token']: token } = parseCookies(context);
+  // const { ['singlelink.token']: token } = parseCookies(context);
 
-  if (token) {
-    return {
-      redirect: {
-        destination: '/account',
-        permanent: true,
-      }
-    }
-  }
+  // if (token) {
+  //   return {
+  //     redirect: {
+  //       destination: '/account',
+  //       permanent: true,
+  //     }
+  //   }
+  // }
 
   return {
     props: {},

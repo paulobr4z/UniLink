@@ -7,7 +7,7 @@ export default function Account() {
   return (
     <>
       <Head>
-        <title>Dev.link | Account</title>
+        <title>UniLink | Account</title>
       </Head>
       <ContentAccount />
     </>

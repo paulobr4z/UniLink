@@ -21,6 +21,10 @@ export const AccountHeaderWrapper = styled.div`
 	max-width: 1400px;
 	margin: 0 32px;
 
+	.logo a {
+		color: #000000;
+	}
+
 	ul {
 		display: flex;
 		align-items: center;

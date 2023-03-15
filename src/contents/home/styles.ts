@@ -14,6 +14,11 @@ export const ContentHomeContainer = styled.div`
     width: 100%;
     height: 80px;
 
+    .logo {
+      font-weight: bold;
+      font-size: 18px;
+    }
+
     nav {
       display: flex;
       align-items: center;
@@ -28,39 +33,41 @@ export const ContentHomeContainer = styled.div`
     }
   }
 
-  .main-title {
+  main {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    width: 60%;
-    height: 90vh;
-    gap: 16px;
+    width: 100%;
 
-    h1 {
-      font-size: 80px;
-      font-weight: bold;
-      line-height: 96px;
+    .main-title {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      width: 50%;
+      height: 90vh;
+      gap: 32px;
+  
+      h1 {
+        font-size: 80px;
+        font-weight: bold;
+        line-height: 88px;
+      }
+  
+      button {
+        padding: 16px 32px;
+        background-color: #000000;
+        color: #ffffff;
+        border: none;
+        border-radius: 100px;
+        font-size: 20px;
+      }
     }
-
-    button {
-      padding: 16px 32px;
-      background-color: #000000;
-      color: #ffffff;
-      border: none;
-      border-radius: 100px;
-      font-size: 24px;
-    }
-  }
-
-  .main-ilustra {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
-
-    img {
-      height: 100%;
+  
+    .main-ilustra {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      width: 50%;
+      height: 90vh;
     }
   }
 `;

@@ -1,5 +1,4 @@
 import { ContentHomeContainer } from "./styles";
-import Image from "next/image";
 import NavLink from 'next/link'
 
 export function ContentHome() {
@@ -7,7 +6,7 @@ export function ContentHome() {
     <ContentHomeContainer>
       <header>
         <div className="logo">
-          dev.link
+          UniLink
         </div>
         <nav className="menu">
           <NavLink href='/login'>Sign in</NavLink >
@@ -19,12 +18,16 @@ export function ContentHome() {
           <h1>
             Everything you are. In one, simple link in bio.
           </h1>
-          <button>
-            Get Started
-          </button>
+          <NavLink href='/signup'>
+            <button>
+              Get Started
+            </button>
+          </NavLink >
         </div>
         <div className="main-ilustra">
-          <Image src='' alt="ilustration" width={200} height={200} />
+          <img 
+            src="https://raw.githubusercontent.com/paulobr4z/dev.link/810ef2ab5fdf83964aa4ba68723b4199699822b7/public/images/ilustra-main.svg"
+          />
         </div>
       </main>
     </ContentHomeContainer>

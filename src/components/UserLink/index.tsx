@@ -13,10 +13,10 @@ interface ILink {
 }
 
 export function UserLink({
-  title = 'title',
+  title = 'new link',
   link_url = "#",
-  bg_color_link = '#ffffff',
-  text_color_link = '#000000',
+  bg_color_link = '#121212',
+  text_color_link = '#ffffff',
   is_active
 }: ILink) {
   return (

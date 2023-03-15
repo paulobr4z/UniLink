@@ -7,7 +7,7 @@ export default function Login() {
   return (
     <>
       <Head>
-        <title>Dev.link | Sign in</title>
+        <title>UniLink | Sign in</title>
       </Head>
       <ContentLogin />
     </>

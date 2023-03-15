@@ -6,7 +6,6 @@ import { storage } from '../../config/firebase.config';
 import { getDownloadURL, ref, uploadBytes, uploadBytesResumable } from "firebase/storage";
 import { AvatarContainer } from './styles';
 
-import blankImg from '../../../public/images/blank-profile-picture.png'
 import { IUser } from '../../types/user';
 
 interface IAvatar {
@@ -26,6 +25,7 @@ export function Avatar({
   const [imageURL, setImageURL] = useState("");
   const inputFile = useRef<HTMLInputElement>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const blankImg = '/images/blank-profile-picture.png'
 
   const { user, setUser } = useContext(AuthContext);
 
@@ -86,7 +86,11 @@ export function Avatar({
 
   return (
     <AvatarContainer width={width} height={height}>
-      <Image src={user?.avatar ? user.avatar : blankImg} width={width} height={height} alt="avatar" />
+      <img
+        src={`${user?.avatar ? user.avatar : blankImg}`}
+        width={width} height={height}
+        alt="avatar"
+      />
       <input 
         type='file' 
         style={{display: 'none'}}

@@ -52,6 +52,7 @@ export const ContentSignupContainer = styled.div`
           padding: 16px;
           border-radius: 8px;
           margin-top: 16px;
+          border: none;
         }
 
         .username {

@@ -54,16 +54,6 @@ export function ContentSignup() {
         <div className="formContent">
           <h1>Create your account</h1>
           <form onSubmit={handleSubmit(handleSubmitForm)}>
-            <div className="username" >
-              <input 
-                className="inputUsername"
-                type="text"
-                placeholder="username"
-                {...register('username')}
-                onClick={() => clearErrors('username')}
-              />
-              <div className="prefix">dev.link/</div>
-            </div>
             <input
               type="text"
               placeholder="First name"
@@ -75,6 +65,13 @@ export function ContentSignup() {
               placeholder="Last name"
               {...register('last_name')}
               onClick={() => clearErrors('last_name')}
+            />
+            <input 
+              className="inputUsername"
+              type="text"
+              placeholder="Username"
+              {...register('username')}
+              onClick={() => clearErrors('username')}
             />
             <input
               type="email"

@@ -11,11 +11,15 @@ export const ProfileContainer = styled.div<IProfileContainer>`
 	width: 100%;
 	min-height: 100vh;
 	padding: 0 16px;
-	background-color: ${({ bgColor }) => bgColor ? bgColor : "#121212" };
+	background-color: ${({ bgColor }) => bgColor ? bgColor : "#000000" };
 
 	h2 {
 		margin-top: 32px;
 		margin-bottom: 16px;
+		
+		a {
+			color: #ffffff;
+		}
 	}
 
 `;

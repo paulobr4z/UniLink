@@ -22,7 +22,7 @@ export function ContentLogin() {
   return (
     <ContentLoginContainer>
       <div className="login-wrapper">
-        <h1>Sign in</h1>
+        <h1>Welcome back!</h1>
         <form onSubmit={handleSubmit}>
           <input
             placeholder="E-mail"

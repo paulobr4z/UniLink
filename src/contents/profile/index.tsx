@@ -41,7 +41,7 @@ export function ContentProfile({
       {
         user ? (
           <ProfileContent>
-            <Avatar />
+            <Avatar width={96} height={96} />
             <ProfileTitle>@{user.username}</ProfileTitle>
             <ProfileBio>{user.bio}</ProfileBio>
             <ProfileLinks>
@@ -62,8 +62,10 @@ export function ContentProfile({
         )
       }
       <h2>
-        <Link href='/' >
-          home
+        <Link 
+          href='/'
+        >
+          UniLink
         </Link>
       </h2>
     </ProfileContainer>
