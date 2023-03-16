@@ -1,4 +1,4 @@
-import { ChangeEvent, useContext } from "react";
+import { ChangeEvent, useContext, useEffect, useRef, useState } from "react";
 import { AccountHeader } from "../../components/AccountHeader";
 import { Avatar } from "../../components/Avatar";
 import { AuthContext } from "../../contexts/AuthContext";
@@ -10,6 +10,7 @@ import { createLink, deleteLink, updateLinkByID, updateUsernameById } from "../.
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { isValidUrl } from "../../utils";
+import { Loading } from "../../components/Loading";
 
 interface IContentAccount {
   host: string
@@ -17,8 +18,8 @@ interface IContentAccount {
 
 export function ContentAccount({ host }: IContentAccount) {
   const { user, setUser } = useContext(AuthContext);
-  
-  console.log(host)  
+  const [isLoading, setIsLoading] = useState(true);
+  const usernameRef = useRef<HTMLInputElement>(null);
 
   async function handleAddNewLink() {
     const update = {...user} as IUser;
@@ -52,8 +53,11 @@ export function ContentAccount({ host }: IContentAccount) {
 
   async function handleDeleteLink(index: number) {
     const update = {...user} as IUser;
-    await deleteLink(update.links[index]._id);
-    delete update.links[index];
+    const response = await deleteLink(update.links[index]._id);
+    console.log('delete', response);
+    console.log('user', user);
+    console.log('lunkId', update.links[index]._id);
+    // delete update.links[index];
     setUser(update);
   }
 
@@ -88,13 +92,15 @@ export function ContentAccount({ host }: IContentAccount) {
 
     const urlValid = isValidUrl(url);
 
-    if (!urlValid) {
+    if (!urlValid && field === 'url') {
       return toast.error(`invalid url`);
     }
 
-    await updateLinkByID(linkInfo);
-
-    toast.success(`${field} updated successfully`);
+    if (linkID) {
+      await updateLinkByID(linkInfo);
+  
+      toast.success(`${field} updated successfully`);
+    }
   }
 
   function onChangeUpdateUsername(e: ChangeEvent<HTMLInputElement>) {
@@ -118,11 +124,21 @@ export function ContentAccount({ host }: IContentAccount) {
     toast.success("Username updated successfully");
   }
 
+  useEffect(() => {
+    if (usernameRef) {
+      usernameRef.current!.value = `${user?.username}`
+    }
+    if (user) {
+      setIsLoading(false);
+    }
+  }, [user]);
+
   return (
     <ContentAccountContainer>
       <ToastContainer position="top-right" />
       <AccountHeader user={user} />
       <SettingsContainer>
+        <Loading isLoading={isLoading} />
         <div className="settings-wrapper">
           <div className="header-content">
             <div className="avatar">
@@ -135,8 +151,8 @@ export function ContentAccount({ host }: IContentAccount) {
             </div>
             <div className="username-field">
               <input
+                ref={usernameRef}
                 type="text"
-                defaultValue={`@${user?.username}`}
                 style={{fontSize: 18, fontWeight: 'bold' }}
                 onChange={(e) => onChangeUpdateUsername(e)}
               />

@@ -22,8 +22,6 @@ export const getServerSideProps:GetServerSideProps = async (context) => {
   const { ['singlelink.token']: token } = parseCookies(context);
   const { req } = context;
 
-  console.log('serve', req.headers.host)
-
   if (!token) {
     return {
       redirect: {

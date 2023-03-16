@@ -53,14 +53,16 @@ async function checkUsernameAlreadyExists(username: string) {
 }
 
 async function getAccountByID(id: string) {
-  try {
-    const response = await api.get(GET_ACCOUNT_BY_ID(id));
-    
-    const { data } = response;
-
-    return data;
-  } catch (error) {
-    console.log(error)
+  if (id) {
+    try {
+      const response = await api.get(GET_ACCOUNT_BY_ID(id));
+      
+      const { data } = response;
+  
+      return data;
+    } catch (error) {
+      console.log(error)
+    }    
   }
 }
 
@@ -153,6 +155,7 @@ async function deleteLink(link_id?: string) {
 
     return data;
   } catch (error) {
+    console.log(error)
     const AxiosError = error as AxiosError;
     console.log(AxiosError.response?.data)
     return AxiosError.response?.data

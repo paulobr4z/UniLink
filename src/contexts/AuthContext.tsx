@@ -29,17 +29,6 @@ export function AuthProvider({ children }: IAuthProvider) {
   const [user, setUser] = useState<IUser>();
   const isAuthenticated = !!user;
 
-  useEffect(() => {
-    const { 'singlelink.userID': userID } = parseCookies();
-
-    async function onGetUser() {
-      const user = await getAccountByID(userID);
-      setUser(user);
-    }
-
-    onGetUser();
-  }, []);
-
   async function signIn({ email, password }: ICredential) {
     try {
       const response = await api.post('/login',{
@@ -73,10 +62,22 @@ export function AuthProvider({ children }: IAuthProvider) {
   }
 
   function signOut() {
-    destroyCookie(undefined, 'singlelink.token')
+    destroyCookie(undefined, 'singlelink.token');
+    destroyCookie(undefined, 'singlelink.userID');
   
     Router.push('/');  
   }
+
+  useEffect(() => {
+    const { 'singlelink.userID': userID } = parseCookies();
+    
+    async function onGetUser() {
+      const user = await getAccountByID(userID);
+      setUser(user);
+    }
+
+    onGetUser();
+  }, []);
 
   return(
     <AuthContext.Provider value={{
