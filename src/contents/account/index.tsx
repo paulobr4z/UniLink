@@ -1,4 +1,4 @@
-import { ChangeEvent, useContext, useEffect, useState } from "react";
+import { ChangeEvent, useContext } from "react";
 import { AccountHeader } from "../../components/AccountHeader";
 import { Avatar } from "../../components/Avatar";
 import { AuthContext } from "../../contexts/AuthContext";
@@ -7,14 +7,18 @@ import Switch from 'react-switch'
 import { Trash } from "phosphor-react";
 import { ILinks, IUser } from "../../types/user";
 import { createLink, deleteLink, updateLinkByID, updateUsernameById } from "../../services";
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { getHostUrl, isValidUrl } from "../../utils";
+import { isValidUrl } from "../../utils";
 
-export function ContentAccount() {
+interface IContentAccount {
+  host: string
+}
+
+export function ContentAccount({ host }: IContentAccount) {
   const { user, setUser } = useContext(AuthContext);
-  const host = getHostUrl();
+  
+  console.log(host)  
 
   async function handleAddNewLink() {
     const update = {...user} as IUser;

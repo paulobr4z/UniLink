@@ -3,19 +3,26 @@ import Head from 'next/head'
 import { parseCookies } from 'nookies';
 import { ContentAccount } from '../../contents/account'
 
-export default function Account() {
+interface IAccount {
+  host: string
+}
+
+export default function Account({ host }: IAccount) {
   return (
     <>
       <Head>
         <title>UniLink | Account</title>
       </Head>
-      <ContentAccount />
+      <ContentAccount host={host} />
     </>
   )  
 }
 
 export const getServerSideProps:GetServerSideProps = async (context) => {
   const { ['singlelink.token']: token } = parseCookies(context);
+  const { req } = context;
+
+  console.log('serve', req.headers.host)
 
   if (!token) {
     return {
@@ -27,6 +34,8 @@ export const getServerSideProps:GetServerSideProps = async (context) => {
   }
 
   return {
-    props: {}
+    props: {
+      host: req.headers.host
+    }
   }
 }
