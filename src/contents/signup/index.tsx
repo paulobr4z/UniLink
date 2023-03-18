@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { createUser } from "../../services";
 import { ContentSignupContainer } from "./styles";
 
@@ -10,6 +10,7 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { AuthContext } from "../../contexts/AuthContext";
+import { ButtonDefault } from "../../components/ButtonDefault";
 
 
 const signUpSchema = yup.object().shape({
@@ -22,12 +23,14 @@ const signUpSchema = yup.object().shape({
 
 export function ContentSignup() {
   const { signIn } = useContext(AuthContext);
+  const [isLoading, setIsLoading] = useState(false);
   const { register, handleSubmit, formState, clearErrors } = useForm({
     resolver: yupResolver(signUpSchema)
   });
 
   async function handleSubmitForm(data:any) {
     const response = await createUser(data);
+    setIsLoading(true);
 
     if (response?.message === 'username already exists') {
       return toast.error(response?.message);
@@ -85,9 +88,11 @@ export function ContentSignup() {
               {...register('password')}
               onClick={() => clearErrors('password')}
             />
-            <button type="submit">
-              Create account
-            </button>
+            <ButtonDefault
+              title="Create account"
+              type="submit"
+              isLoading={isLoading}
+            />
           </form>
         </div>
       </div>

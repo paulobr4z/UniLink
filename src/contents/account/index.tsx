@@ -7,10 +7,11 @@ import Switch from 'react-switch'
 import { Trash } from "phosphor-react";
 import { ILinks, IUser } from "../../types/user";
 import { createLink, deleteLink, updateLinkByID, updateUsernameById } from "../../services";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { isValidUrl } from "../../utils";
 import { Loading } from "../../components/Loading";
+import { ButtonDefault } from "../../components/ButtonDefault";
 
 interface IContentAccount {
   host: string
@@ -20,21 +21,29 @@ export function ContentAccount({ host }: IContentAccount) {
   const { user, setUser } = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(true);
   const usernameRef = useRef<HTMLInputElement>(null);
+  const [addLinkLoading, setAddLinkLoading] = useState(false);
 
   async function handleAddNewLink() {
     const update = {...user} as IUser;
-
+    setAddLinkLoading(true);
+    
+    const { linkId } = await createLink({
+      user_id: update._id,
+      title: "New link",
+      url: ""
+    });
+    
     const newLink:ILinks = {
+      _id: linkId,
       is_active: true,
-      title: 'New link',
-      url: ''
+      title: "New link",
+      url: ""
     }
-
+    
     update.links = [...update.links, newLink];
     
     setUser(update);
-    
-    await createLink(newLink);
+    setAddLinkLoading(false);
   }
 
   async function handleHideLink(index: number) {
@@ -53,11 +62,8 @@ export function ContentAccount({ host }: IContentAccount) {
 
   async function handleDeleteLink(index: number) {
     const update = {...user} as IUser;
-    const response = await deleteLink(update.links[index]._id);
-    console.log('delete', response);
-    console.log('user', user);
-    console.log('lunkId', update.links[index]._id);
-    // delete update.links[index];
+    await deleteLink(update.links[index]._id);
+    delete update.links[index];
     setUser(update);
   }
 
@@ -93,14 +99,12 @@ export function ContentAccount({ host }: IContentAccount) {
     const urlValid = isValidUrl(url);
 
     if (!urlValid && field === 'url') {
-      return toast.error(`invalid url`);
+      return toast.error("invalid url");
     }
 
-    if (linkID) {
-      await updateLinkByID(linkInfo);
-  
-      toast.success(`${field} updated successfully`);
-    }
+    await updateLinkByID(linkInfo);
+
+    toast.success(`${field} updated successfully`);
   }
 
   function onChangeUpdateUsername(e: ChangeEvent<HTMLInputElement>) {
@@ -163,15 +167,20 @@ export function ContentAccount({ host }: IContentAccount) {
                 update username
               </button>
             </div>
-          </div>          
+          </div>
+          <div className="color-palette">
+            <p>background</p>
+            <p>link text</p>
+            <p>link border</p>
+          </div>
           <div className="links-container">
             <header>
-              <button 
+              <ButtonDefault
                 className="add-link"
+                title="add new link"
                 onClick={handleAddNewLink}
-              >
-                add new link
-              </button>
+                isLoading={addLinkLoading}
+              />
             </header>
             <main className="links-main">
               {user?.links?.map((link, index) => (
@@ -180,7 +189,7 @@ export function ContentAccount({ host }: IContentAccount) {
                     <input
                       type="text"
                       placeholder="Add title"
-                      defaultValue={link.title}
+                      defaultValue={link?.title}
                       style={{fontWeight: "bold"}}
                       onChange={(e) => updateLinkTitle(e, index)}
                       onBlur={() => updateLinkOnBlur(index, 'title')}
@@ -228,10 +237,10 @@ export function ContentAccount({ host }: IContentAccount) {
           {user?.links.map((link, index) => (
             <div
               className="preview-links"
-              style={{display: `${link.is_active ? 'flex' : 'none'}`}}
+              style={{display: `${link?.is_active ? 'flex' : 'none'}`}}
               key={`preview${index}`}
             >
-              <p>{link.title}</p>
+              <p>{link?.title}</p>
             </div>
           ))}
         </div>

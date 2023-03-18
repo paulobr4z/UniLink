@@ -57,7 +57,7 @@ export function AuthProvider({ children }: IAuthProvider) {
       setUser(account);
     } catch (error) {
       const axiosError = error as AxiosError;
-      console.log(axiosError.response?.data);
+      throw axiosError.response?.data;
     }
   }
 

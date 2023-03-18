@@ -23,6 +23,7 @@ export const SettingsContainer = styled.div`
     align-items: center;
     width: 100%;
     max-width: 560px;
+    padding-bottom: 48px;
   }
 
   .header-content {
@@ -128,14 +129,17 @@ export const SettingsContainer = styled.div`
 `;
 
 export const PreviewContainer = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   width: 40%;
   height: 100%;
 
   .share {
+    position: fixed;
+    top: 80px;
     padding: 8px 16px;
     margin: 32px;
     background-color: #ffffff;
@@ -149,6 +153,8 @@ export const PreviewContainer = styled.div`
   }
 
   .preview {
+    position: fixed;
+    top: 180px;
     display: flex;
     flex-direction: column;
     align-items: center;
