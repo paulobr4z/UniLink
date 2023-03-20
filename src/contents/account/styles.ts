@@ -84,7 +84,6 @@ export const SettingsContainer = styled.div`
   .links-container {
     width: 100%;
     border-radius: 8px;
-    margin-top: 32px;
     row-gap: 8px;
 
     header {
@@ -186,5 +185,52 @@ export const PreviewContainer = styled.div`
         color: #ffffff;
       }
     }
+  }
+`;
+
+export const ColorPalette = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  background-color: #ffffff;
+  margin-top: 16px;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  gap: 16px;
+
+  h4 {
+    font-size: 18px;
+  }
+
+  main {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .teste {
+    position: relative;
+  }
+
+  span {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    button {
+      margin-bottom: 8px;
+    }
+  }
+
+  button {
+    width: 94px;
+    height: 94px;
+    border-radius: 50%;
+    background-color: #000000;
+    border: 1px solid #bdbdbd;
   }
 `;

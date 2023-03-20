@@ -2,7 +2,7 @@ import { ChangeEvent, useContext, useEffect, useRef, useState } from "react";
 import { AccountHeader } from "../../components/AccountHeader";
 import { Avatar } from "../../components/Avatar";
 import { AuthContext } from "../../contexts/AuthContext";
-import { ContentAccountContainer, PreviewContainer, SettingsContainer } from "./styles";
+import { ColorPalette, ContentAccountContainer, PreviewContainer, SettingsContainer } from "./styles";
 import Switch from 'react-switch'
 import { Trash } from "phosphor-react";
 import { ILinks, IUser } from "../../types/user";
@@ -12,6 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { isValidUrl } from "../../utils";
 import { Loading } from "../../components/Loading";
 import { ButtonDefault } from "../../components/ButtonDefault";
+import { ColorPicker } from "../../components/ColorPicker";
 
 interface IContentAccount {
   host: string
@@ -168,11 +169,30 @@ export function ContentAccount({ host }: IContentAccount) {
               </button>
             </div>
           </div>
-          <div className="color-palette">
-            <p>background</p>
-            <p>link text</p>
-            <p>link border</p>
-          </div>
+          <ColorPalette>
+            <h4>Color Palette</h4>
+            <main>
+              <span className="">
+                <button></button>
+                <p>background</p>
+              </span>
+              {/* <ColorPicker isOpen /> */}
+              <span className="teste">
+                <button></button>
+                <p>text color</p>
+                {/* <ColorPicker isOpen /> */}
+              </span>
+              <span>
+                <button></button>
+                <p>border</p>
+              </span>
+              <span>
+                <button></button>
+                <p>link</p>
+                <p>background</p>
+              </span>
+            </main>
+          </ColorPalette>
           <div className="links-container">
             <header>
               <ButtonDefault

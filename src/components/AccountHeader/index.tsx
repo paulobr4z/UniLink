@@ -23,7 +23,7 @@ export function AccountHeader({ user }: IAccountHeader) {
             UniLink
           </Link>
         </div>
-        <span className="sign-out" onClick={signOut}>
+        <span className="log-out" onClick={signOut}>
           <p>log out</p>
           <SignOut size={24} />
         </span>

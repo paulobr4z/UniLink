@@ -3,6 +3,8 @@ import Link from 'next/link'
 import { Avatar } from '../../components/Avatar';
 import { UserLink } from '../../components/UserLink';
 import { IUser } from '../../types/user';
+import { getUserByUsername } from '../../services';
+import { Loading } from '../../components/Loading';
 
 import { 
   ProfileBio,
@@ -12,8 +14,6 @@ import {
   ProfileNotFound,
   ProfileTitle
 } from './styles';
-import { Loading } from '../../components/Loading';
-import { getUserByUsername } from '../../services';
 
 interface IContentProfile {
   username: string

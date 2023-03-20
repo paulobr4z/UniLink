@@ -11,6 +11,7 @@ export const AccountHeaderContainer = styled.div`
 	height: 80px;
 	background-color: #ffffff;
 	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+	z-index: 1;
 `;
 
 export const AccountHeaderWrapper = styled.div`
@@ -36,7 +37,7 @@ export const AccountHeaderWrapper = styled.div`
 		}
 	}
 
-	.sign-out {
+	.log-out {
 		display: flex;
 		align-items: center;
 		justify-content: center;

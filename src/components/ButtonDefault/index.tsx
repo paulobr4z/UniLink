@@ -1,5 +1,4 @@
-import { CircleNotch } from "phosphor-react";
-import { ButtonHTMLAttributes, useContext } from "react";
+import { ButtonHTMLAttributes } from "react";
 import {
   ButtonDefaultContainer,
 } from './styles';
