@@ -65,7 +65,9 @@ export function AuthProvider({ children }: IAuthProvider) {
     destroyCookie(undefined, 'singlelink.token');
     destroyCookie(undefined, 'singlelink.userID');
   
-    Router.push('/');  
+    Router.push('/');
+
+    setUser(undefined);
   }
 
   useEffect(() => {

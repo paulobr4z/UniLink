@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Dev link | Home</title>
+        <title>UniLink | Home</title>
       </Head>
       <ContentHome />
     </>

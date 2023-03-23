@@ -3,7 +3,8 @@ export interface IUser {
   username?: string;
   bg_color?: string;
   bg_color_link?: string;
-  text_color_link?: string;
+  text_color?: string;
+  border_color?: string;
   bio?: string;
   color_link?: string;
   email?: string;

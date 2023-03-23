@@ -6,10 +6,10 @@ import { ColorPalette, ContentAccountContainer, PreviewContainer, SettingsContai
 import Switch from 'react-switch'
 import { Trash } from "phosphor-react";
 import { ILinks, IUser } from "../../types/user";
-import { createLink, deleteLink, updateLinkByID, updateUsernameById } from "../../services";
+import { createLink, deleteLink, updateLinkByID, updateUser, updateUsernameById } from "../../services";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { isValidUrl } from "../../utils";
+import { formatFieldName, isValidUrl } from "../../utils";
 import { Loading } from "../../components/Loading";
 import { ButtonDefault } from "../../components/ButtonDefault";
 import { ColorPicker } from "../../components/ColorPicker";
@@ -23,6 +23,7 @@ export function ContentAccount({ host }: IContentAccount) {
   const [isLoading, setIsLoading] = useState(true);
   const usernameRef = useRef<HTMLInputElement>(null);
   const [addLinkLoading, setAddLinkLoading] = useState(false);
+  const [color, setColor] = useState("");
 
   async function handleAddNewLink() {
     const update = {...user} as IUser;
@@ -105,7 +106,7 @@ export function ContentAccount({ host }: IContentAccount) {
 
     await updateLinkByID(linkInfo);
 
-    toast.success(`${field} updated successfully`);
+    toast.success(`${formatFieldName(field)} updated successfully`);
   }
 
   function onChangeUpdateUsername(e: ChangeEvent<HTMLInputElement>) {
@@ -137,6 +138,33 @@ export function ContentAccount({ host }: IContentAccount) {
       setIsLoading(false);
     }
   }, [user]);
+
+  interface IFormatFieldName {
+    [key: string]: string
+  }
+
+
+  async function updateStyle(field: string, color: any) {
+    const update = {...user} as IUser;    
+    
+    if (update.bg_color !== undefined) {
+        update[field as keyof IUser] = color;
+
+        try {
+          await updateUser({
+            field,
+            user_id: `${update._id}`,
+            value: color
+          })
+          
+          toast.success(`${formatFieldName(field)} updated successfully`);        
+        } catch (error) {
+          toast.error(`${error}, try again!`);      
+        }
+        
+        setUser(update);
+      };    
+  }
 
   return (
     <ContentAccountContainer>
@@ -172,25 +200,26 @@ export function ContentAccount({ host }: IContentAccount) {
           <ColorPalette>
             <h4>Color Palette</h4>
             <main>
-              <span className="">
-                <button></button>
-                <p>background</p>
-              </span>
-              {/* <ColorPicker isOpen /> */}
-              <span className="teste">
-                <button></button>
-                <p>text color</p>
-                {/* <ColorPicker isOpen /> */}
-              </span>
-              <span>
-                <button></button>
-                <p>border</p>
-              </span>
-              <span>
-                <button></button>
-                <p>link</p>
-                <p>background</p>
-              </span>
+              <ColorPicker
+                title="background"
+                handleChangeColor={(color) => updateStyle('bg_color', color)}
+                defaultColor={user?.bg_color}
+              />
+              <ColorPicker
+                title="text color"
+                handleChangeColor={(color) => updateStyle('text_color', color)}
+                defaultColor={user?.text_color}
+              />
+              <ColorPicker
+                title="border color"
+                handleChangeColor={(color) => updateStyle('border_color', color)}
+                defaultColor={user?.border_color}
+              />
+              <ColorPicker
+                title="link background"
+                handleChangeColor={(color) => updateStyle('bg_color_link', color)}
+                defaultColor={user?.bg_color_link}
+              />
             </main>
           </ColorPalette>
           <div className="links-container">
@@ -245,7 +274,12 @@ export function ContentAccount({ host }: IContentAccount) {
           </div>
         </div>
       </SettingsContainer>
-      <PreviewContainer>
+      <PreviewContainer
+        bg_color={user?.bg_color}
+        bg_color_link={user?.bg_color_link}
+        text_color={user?.text_color}
+        border_color={user?.border_color}
+      >
         <div className="share">
           <a href={`/${user?.username}`} target="_blank" rel="noreferrer">
             <p>{host}/{user?.username}</p>
@@ -254,7 +288,7 @@ export function ContentAccount({ host }: IContentAccount) {
         <div className="preview">
           <Avatar width={80} height={80}/>
           <h4>{`@${user?.username}`}</h4>
-          {user?.links.map((link, index) => (
+          {user?.links?.map((link, index) => (
             <div
               className="preview-links"
               style={{display: `${link?.is_active ? 'flex' : 'none'}`}}

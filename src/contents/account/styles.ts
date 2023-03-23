@@ -127,7 +127,14 @@ export const SettingsContainer = styled.div`
   }
 `;
 
-export const PreviewContainer = styled.div`
+interface IPreviewContainer {
+  bg_color?: string;
+  bg_color_link?: string;
+  text_color?: string;
+  border_color?: string;
+}
+
+export const PreviewContainer = styled.div<IPreviewContainer>`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -162,10 +169,10 @@ export const PreviewContainer = styled.div`
     border: 8px solid #121212;
     border-radius: 32px;
     padding: 32px;
-    background-color: #000000;
+    background-color: ${({bg_color}) => bg_color};
 
     h4 {
-      color: #ffffff;
+      color: ${({text_color}) => text_color};
       margin: 16px 0;
     }
 
@@ -173,16 +180,16 @@ export const PreviewContainer = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: #121212;
+      background-color: ${({bg_color_link}) => bg_color_link};
       padding: 8px;
       width: 100%;
       margin-bottom: 8px;
       border-radius: 8px;
-      border: 1px solid #ffffff;
+      border: 1px solid ${({border_color}) => border_color};
       overflow: hidden;
 
       p {
-        color: #ffffff;
+        color: ${({text_color}) => text_color};
       }
     }
   }
