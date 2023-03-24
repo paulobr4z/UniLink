@@ -19,7 +19,7 @@ export function ContentHome() {
             Simplify your online presence.
           </h1>
           <h3>
-            Connect with your audience like never before with our intuitive link management system."
+            Connect with your audience like never before with our intuitive link management system.
           </h3>
           <NavLink href='/signup'>
             <button>
