@@ -6,6 +6,7 @@ export const ContentLoginContainer = styled.div`
   justify-content: center;
   width: 100%;
   height: 100vh;
+  padding: 0 16px;
 
   .login-wrapper {
     max-width: 560px;
@@ -16,6 +17,11 @@ export const ContentLoginContainer = styled.div`
       text-align: center;
       font-size: 48px;
       margin-bottom: 32px;
+
+      @media (max-width: 560px) {
+        font-size: 40px;
+        line-height: 48px;
+      }
     }
 
     p {

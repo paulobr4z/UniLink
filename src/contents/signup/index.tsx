@@ -29,8 +29,17 @@ export function ContentSignup() {
   });
 
   async function handleSubmitForm(data:any) {
-    const response = await createUser(data);
     setIsLoading(true);
+
+    const userInfo = {
+      ...data,
+      bg_color: "#000000",
+      bg_color_link: "#121212",
+      border_color: "#ffffff",
+      text_color: "#ffffff"
+    }
+
+    const response = await createUser(userInfo);
 
     if (response?.message === 'username already exists') {
       return toast.error(response?.message);
@@ -45,7 +54,8 @@ export function ContentSignup() {
         email: data.email,
         password: data.password
       }
-  
+
+      toast.success('Signing in...');  
       await signIn(loginData);
     }
   }

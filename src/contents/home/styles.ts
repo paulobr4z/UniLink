@@ -5,7 +5,11 @@ export const ContentHomeContainer = styled.div`
   max-width: 1400px;
   min-height: 100vh;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0 32px;
+
+  @media (max-width: 560px) {
+    padding: 0 16px;
+  }
 
   header {
     display: flex;
@@ -29,6 +33,7 @@ export const ContentHomeContainer = styled.div`
         background-color: #0C0C0C;
         border-radius: 8px;
         color: #ffffff;
+        border: none;
       }
     }
   }
@@ -37,6 +42,10 @@ export const ContentHomeContainer = styled.div`
     display: flex;
     width: 100%;
 
+    @media (max-width: 992px) {
+      flex-direction: column;
+    }
+
     .main-title {
       display: flex;
       flex-direction: column;
@@ -44,12 +53,49 @@ export const ContentHomeContainer = styled.div`
       justify-content: center;
       width: 50%;
       height: 90vh;
-      gap: 32px;
+
+      @media (max-width: 992px) {
+        align-items: center;
+        width: 100%;
+        height: initial;
+        padding: 120px 0;
+      }
   
       h1 {
-        font-size: 80px;
+        font-size: 74px;
         font-weight: bold;
         line-height: 88px;
+        margin-bottom: 16px;
+
+        @media (max-width: 1024px) {
+          font-size: 64px;
+          line-height: 76px;
+        }
+
+        @media (max-width: 992px) {
+          text-align: center;
+        }
+
+        @media (max-width: 560px) {
+          font-size: 48px;
+          line-height: 58px;
+        }
+      }
+
+      h3 {
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 28px;
+        color: #0C0C0C;
+        margin-bottom: 32px;
+
+        @media (max-width: 992px) {
+          text-align: center;
+        }
+
+        @media (max-width: 560px) {
+          font-size: 16px;
+        }
       }
   
       button {
@@ -64,10 +110,34 @@ export const ContentHomeContainer = styled.div`
   
     .main-ilustra {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       justify-content: center;
       width: 50%;
       height: 90vh;
+
+      @media (max-width: 992px) {
+        width: 100%;
+        height: initial;
+      }
+    }
+
+    img {
+      width: 100%;
+
+      @media (max-width: 992px) {
+        width: 60%;
+      }
+    }
+  }
+
+  @media (max-width: 560px) {
+    .menu {
+      gap: 8px;
+
+      a {
+        font-size: 12px;
+        padding: 8px 16px;
+      }
     }
   }
 `;

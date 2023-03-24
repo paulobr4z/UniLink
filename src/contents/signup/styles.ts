@@ -8,12 +8,17 @@ export const ContentSignupContainer = styled.div`
   max-width: 1400px;
   min-height: 100vh;
   margin: 0 auto;
+  padding: 0 16px;
 
   .leftContent {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 60%;
+
+    @media (max-width: 560px) {
+      width: 100%;
+    }
 
     .formContent {
       display: flex;
@@ -24,7 +29,13 @@ export const ContentSignupContainer = styled.div`
 
       h1 {
         font-size: 48px;
+        line-height: 58px;
         margin-bottom: 32px;
+
+        @media (max-width: 560px) {
+          font-size: 40px;
+          line-height: 48px;
+        }
       }
     
       form {
@@ -80,5 +91,9 @@ export const ContentSignupContainer = styled.div`
     align-items: center;
     justify-content: center;
     width: 40%;
+
+    @media (max-width: 992px) {
+      display: none;
+    }
   }
 `;

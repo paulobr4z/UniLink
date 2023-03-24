@@ -67,7 +67,10 @@ export function AuthProvider({ children }: IAuthProvider) {
   
     Router.push('/');
 
-    setUser(undefined);
+    setTimeout(() => {
+      
+      setUser(undefined);
+    }, 1000);
   }
 
   useEffect(() => {

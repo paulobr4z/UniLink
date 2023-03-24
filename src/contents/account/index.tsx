@@ -148,22 +148,22 @@ export function ContentAccount({ host }: IContentAccount) {
     const update = {...user} as IUser;    
     
     if (update.bg_color !== undefined) {
-        update[field as keyof IUser] = color;
-
-        try {
-          await updateUser({
-            field,
-            user_id: `${update._id}`,
-            value: color
-          })
-          
-          toast.success(`${formatFieldName(field)} updated successfully`);        
-        } catch (error) {
-          toast.error(`${error}, try again!`);      
-        }
+      update[field as keyof IUser] = color;
+      
+      try {
+        await updateUser({
+          field,
+          user_id: `${update._id}`,
+          value: color
+        })
         
-        setUser(update);
-      };    
+        toast.success(`${formatFieldName(field)} updated successfully`);        
+      } catch (error) {
+        toast.error(`${error}, try again!`);      
+      }
+      
+      setUser(update);
+    };    
   }
 
   return (
@@ -246,7 +246,7 @@ export function ContentAccount({ host }: IContentAccount) {
                     <input
                       type="text"
                       placeholder="Add URL"
-                      defaultValue={link.url}
+                      defaultValue={link?.url}
                       onChange={(e) => updateLinkUrl(e, index)}
                       onBlur={() => updateLinkOnBlur(index, 'url')}
                     />

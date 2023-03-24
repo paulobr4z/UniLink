@@ -16,8 +16,11 @@ export function ContentHome() {
       <main>
         <div className="main-title">
           <h1>
-            Everything you are. In one, simple link in bio.
+            Simplify your online presence.
           </h1>
+          <h3>
+            Connect with your audience like never before with our intuitive link management system."
+          </h3>
           <NavLink href='/signup'>
             <button>
               Get Started

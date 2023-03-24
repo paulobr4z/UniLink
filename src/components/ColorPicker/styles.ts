@@ -12,6 +12,7 @@ export const ColorPickerContainer = styled.div<IColorPickerContainer>`
 	justify-content: center;
 
 	p {
+		font-size: 14px;
 		margin-top: 8px;
 	}
 
@@ -53,8 +54,8 @@ export const ColorPickerContainer = styled.div<IColorPickerContainer>`
   }
 
   button {
-    width: 94px;
-    height: 94px;
+    width: 88px;
+    height: 88px;
     border-radius: 50%;
     background-color: ${({ defaultColor }) => defaultColor };
     border: 1px solid #bdbdbd;

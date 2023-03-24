@@ -1,11 +1,17 @@
 import styled, { css, CSSProp } from 'styled-components';
 
 export const ContentAccountContainer = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  padding-bottom: 48px;
+
+  @media (max-width: 992px) {
+    flex-direction: column;
+  }
 `;
 
 export const SettingsContainer = styled.div`
@@ -17,6 +23,11 @@ export const SettingsContainer = styled.div`
   padding-top: 120px;
   background-color: #F5F5F5;
 
+  @media (max-width: 992px) {
+    width: 100%;
+    padding: 120px 16px 0;
+  }
+
   .settings-wrapper {
     display: flex;
     flex-direction: column;
@@ -24,6 +35,11 @@ export const SettingsContainer = styled.div`
     width: 100%;
     max-width: 560px;
     padding-bottom: 48px;
+
+    @media (max-width: 992px) {
+      width: 100%;
+      padding-bottom: 0;
+    }
   }
 
   .header-content {
@@ -55,6 +71,10 @@ export const SettingsContainer = styled.div`
     border-radius: 8px;
     color: #ffffff;
     font-size: 14px;
+
+    @media (max-width: 560px) {
+      width: 100%;
+    }
   }
 
   input {
@@ -74,6 +94,10 @@ export const SettingsContainer = styled.div`
     border-radius: 8px;
     background-color: #ffffff;
     gap: 16px;
+
+    @media (max-width: 560px) {
+      flex-direction: column;
+    }
 
     input {
       border: 1px solid #000000;
@@ -152,6 +176,10 @@ export const PreviewContainer = styled.div<IPreviewContainer>`
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     border-radius: 8px;
     cursor: pointer;
+
+    @media (max-width: 992px) {
+      position: initial;
+    }
     
     a {
       color: #000000;
@@ -170,6 +198,10 @@ export const PreviewContainer = styled.div<IPreviewContainer>`
     border-radius: 32px;
     padding: 32px;
     background-color: ${({bg_color}) => bg_color};
+
+    @media (max-width: 992px) {
+      position: initial;
+    }
 
     h4 {
       color: ${({text_color}) => text_color};
@@ -216,6 +248,11 @@ export const ColorPalette = styled.div`
     align-items: flex-start;
     justify-content: space-between;
     width: 100%;
+    gap: 16px;
+
+    @media (max-width: 992px) {
+      flex-wrap: wrap;
+    }
   }
 
   .teste {

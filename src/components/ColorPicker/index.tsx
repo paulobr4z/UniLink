@@ -16,7 +16,7 @@ export function ColorPicker({
   defaultColor,
   handleChangeColor
 }:IColorPicker) {
-  const [color, setColor] = useState(defaultColor || "#000000");
+  const [color, setColor] = useState(`${defaultColor}`);
   const [isOpen, setIsOpen] = useState(false);
 
   const debouncedValue = useDebounce<string>(color, 1000);
