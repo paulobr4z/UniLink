@@ -9,7 +9,7 @@ export function ContentHome() {
           UniLink
         </div>
         <nav className="menu">
-          <NavLink href='/login'>Sign in</NavLink >
+          <NavLink href='/login'>Log in</NavLink >
           <NavLink href='/signup' >Sign up</NavLink >
         </nav>
       </header>

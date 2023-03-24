@@ -6,11 +6,14 @@ import { ContentLoginContainer } from "./styles";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Eye, EyeClosed } from "phosphor-react";
+import { HeaderDefault } from "../../components/HeaderDefault";
 
 export function ContentLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const { signIn } = useContext(AuthContext);
 
@@ -35,6 +38,7 @@ export function ContentLogin() {
   return (
     <ContentLoginContainer>
       <ToastContainer position="top-right" />
+      <HeaderDefault />
       <div className="login-wrapper">
         <h1>Welcome back!</h1>
         <form onSubmit={handleSubmit}>
@@ -44,12 +48,19 @@ export function ContentLogin() {
             value={email}
             onChange={e => setEmail(e.target.value)}
           />
-          <input
-            placeholder="Password"
-            type="password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-          />
+          <span className="password-input">
+            <input
+              placeholder="Password"
+              type={showPassword ? "text" : "password"}
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+            />
+            {
+              showPassword
+              ? <Eye size={24} onClick={ () => setShowPassword(false)}/>
+              : <EyeClosed size={24} onClick={ () => setShowPassword(true)}/>
+            }
+          </span>
           <ButtonDefault
             title="login"
             type="submit"

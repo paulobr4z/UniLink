@@ -8,7 +8,7 @@ export const ContentSignupContainer = styled.div`
   max-width: 1400px;
   min-height: 100vh;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 88px 16px 32px;
 
   .leftContent {
     display: flex;
@@ -50,10 +50,22 @@ export const ContentSignupContainer = styled.div`
           padding: 18px;
           border-radius: 8px;
           border: none;
-          box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+          box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 
           ::placeholder {
             color: #77838f;
+          }
+        }
+
+        .password-input {
+          position: relative;
+          display: flex;
+          align-items: center;
+
+          svg {
+            position: absolute;
+            right: 16px;
+            cursor: pointer;
           }
         }
 

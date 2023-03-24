@@ -3,8 +3,6 @@ import styled, { css, CSSProp } from 'styled-components';
 export const ContentAccountContainer = styled.div`
   position: relative;
   display: flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
   min-height: 100vh;
   padding-bottom: 48px;
@@ -159,19 +157,21 @@ interface IPreviewContainer {
 }
 
 export const PreviewContainer = styled.div<IPreviewContainer>`
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   width: 40%;
   height: 100%;
+  padding-top: 120px;
+
+  @media (max-width: 992px) {
+    width: 100%;
+  }
 
   .share {
-    position: fixed;
-    top: 80px;
     padding: 8px 16px;
-    margin: 32px;
+    margin-bottom: 32px;
     background-color: #ffffff;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     border-radius: 8px;
@@ -187,8 +187,6 @@ export const PreviewContainer = styled.div<IPreviewContainer>`
   }
 
   .preview {
-    position: fixed;
-    top: 180px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -237,7 +235,7 @@ export const ColorPalette = styled.div`
   padding: 24px;
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-  gap: 16px;
+  row-gap: 16px;
 
   h4 {
     font-size: 18px;
@@ -248,15 +246,11 @@ export const ColorPalette = styled.div`
     align-items: flex-start;
     justify-content: space-between;
     width: 100%;
-    gap: 16px;
+    row-gap: 16px;
 
-    @media (max-width: 992px) {
+    @media (max-width: 560px) {
       flex-wrap: wrap;
     }
-  }
-
-  .teste {
-    position: relative;
   }
 
   span {

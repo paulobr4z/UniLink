@@ -23,7 +23,7 @@ export function ContentAccount({ host }: IContentAccount) {
   const [isLoading, setIsLoading] = useState(true);
   const usernameRef = useRef<HTMLInputElement>(null);
   const [addLinkLoading, setAddLinkLoading] = useState(false);
-  const [color, setColor] = useState("");
+  const [counter, setCounter] = useState(0);
 
   async function handleAddNewLink() {
     const update = {...user} as IUser;
@@ -143,11 +143,12 @@ export function ContentAccount({ host }: IContentAccount) {
     [key: string]: string
   }
 
-
   async function updateStyle(field: string, color: any) {
-    const update = {...user} as IUser;    
+    const update = {...user} as IUser;
+
+    setCounter(prev => prev + 1);
     
-    if (update.bg_color !== undefined) {
+    if (update.bg_color !== undefined && counter >= 4) {
       update[field as keyof IUser] = color;
       
       try {

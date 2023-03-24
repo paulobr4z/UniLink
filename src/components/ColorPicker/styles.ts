@@ -10,6 +10,7 @@ export const ColorPickerContainer = styled.div<IColorPickerContainer>`
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	width: 120px;
 
 	p {
 		font-size: 14px;

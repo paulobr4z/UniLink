@@ -19,11 +19,11 @@ export function ColorPicker({
   const [color, setColor] = useState(`${defaultColor}`);
   const [isOpen, setIsOpen] = useState(false);
 
-  const debouncedValue = useDebounce<string>(color, 1000);
+  const debouncedValue = useDebounce<string>(color, 500);
 
   useEffect(() => {
     handleChangeColor(color);
-  }, [debouncedValue])
+  }, [debouncedValue]);
 
   return (
     <ColorPickerContainer

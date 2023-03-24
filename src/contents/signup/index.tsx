@@ -11,6 +11,8 @@ import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { AuthContext } from "../../contexts/AuthContext";
 import { ButtonDefault } from "../../components/ButtonDefault";
+import { Eye, EyeClosed } from "phosphor-react";
+import { HeaderDefault } from "../../components/HeaderDefault";
 
 
 const signUpSchema = yup.object().shape({
@@ -24,6 +26,8 @@ const signUpSchema = yup.object().shape({
 export function ContentSignup() {
   const { signIn } = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
   const { register, handleSubmit, formState, clearErrors } = useForm({
     resolver: yupResolver(signUpSchema)
   });
@@ -63,6 +67,7 @@ export function ContentSignup() {
   return (
     <ContentSignupContainer>
       <ToastContainer position="top-right" />
+      <HeaderDefault />
       <div className="leftContent">
         <div className="formContent">
           <h1>Create your account</h1>
@@ -92,12 +97,19 @@ export function ContentSignup() {
               {...register('email')}
               onClick={() => clearErrors('email')}
             />
-            <input
-              type="password"
-              placeholder="Password"
-              {...register('password')}
-              onClick={() => clearErrors('password')}
-            />
+            <span className="password-input">
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                {...register('password')}
+                onClick={() => clearErrors('password')}
+              />
+              {
+                showPassword
+                ? <Eye size={24} onClick={ () => setShowPassword(false)}/>
+                : <EyeClosed size={24} onClick={ () => setShowPassword(true)}/>
+              }
+            </span>
             <ButtonDefault
               title="Create account"
               type="submit"
