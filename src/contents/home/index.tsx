@@ -6,6 +6,7 @@ export function ContentHome() {
     <ContentHomeContainer>
       <header>
         <div className="logo">
+          <img src="/images/icon.svg" alt="logo" />
           UniLink
         </div>
         <nav className="menu">

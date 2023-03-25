@@ -19,8 +19,17 @@ export const ContentHomeContainer = styled.div`
     height: 80px;
 
     .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-weight: bold;
       font-size: 18px;
+      gap: 16px;
+
+      img {
+        width: 32px;
+        border-radius: 6px;
+      }
     }
 
     nav {

@@ -28,5 +28,19 @@ export const HeaderDefaultContainer = styled.div`
     	font-size: 18px;
 			color: #000000;
 		}
+
+		.logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 18px;
+      gap: 16px;
+
+      img {
+        width: 32px;
+        border-radius: 6px;
+      }
+    }
 	}
 `;
