@@ -1,34 +1,48 @@
-This is a fdsfsd [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# UniLink
 
-## Getting Started
+Bem-vindo ao meu [UniLink](https://unilink.vercel.app)! Este projeto é semelhante a sites populares como [linktr.ee](https://linktr.ee/) e [beacons.ai](https://beacons.ai/), que permitem que os usuários criem uma página de destino personalizada com links para suas redes sociais, portfólio e outras informações relevantes.
 
-First, run the development server:
+Este projeto foi desenvolvido para permitir que os usuários criem uma Página de links personalizada e interativa para si ou sua empresa. O objetivo é fornecer uma maneira fácil e eficaz de compartilhar todas as suas informações importantes em um só lugar.
 
-```bash
-npm run dev
-# or
+Com este projeto, você pode criar sua própria Página de links personalizada, que pode ser compartilhado para todos. Você pode adicionar links para suas contas de mídia social, portfólio, loja online, informações de contato e muito mais.
+
+Para começar a usar esta plataforma, basta se inscrever e criar sua própria página de links.
+
+
+## Tecnologias
+
+Tecnologias e ferramentas utilizadas no desenvolvimento do projeto:
+
+- Front-end
+    * Next
+    * Typescript
+    * Styled Components
+    * React Hook Form
+    * Axios
+    * nookies
+    * Deploy: [Vercel](https://vercel.com)
+
+- Back-end
+    * Node
+    * Typescript
+    * Express
+    * Mongoose
+    * JWT
+    * MongoDB
+    * Deploy [Render](https://render.com/)
+
+## Instalação
+
+```
+# Abra um terminal e copie o repositório com o comando
+git clone https://github.com/paulobr4z/videoApp.git
+
+# Entre na pasta com 
+cd UniLink
+
+# Instale as dependências
+yarn
+
+# Rode o aplicação
 yarn dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
