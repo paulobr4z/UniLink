@@ -1,7 +1,8 @@
 import Head from 'next/head'
 import { GetServerSideProps } from 'next';
 import { parseCookies } from 'nookies';
-import { ContentSignup } from '../contents/signup'
+import { ContentSignup } from '../contents/signup';
+
 
 export default function Signup() {
   return (
