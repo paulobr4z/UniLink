@@ -1,5 +1,8 @@
 # UniLink
 
+![image 1](https://user-images.githubusercontent.com/52705622/228021027-0e64b211-b96d-4936-a42e-cd66909a06c4.png)
+
+
 Bem-vindo ao meu [UniLink](https://unilink.vercel.app)! Este projeto é semelhante a sites populares como [linktr.ee](https://linktr.ee/) e [beacons.ai](https://beacons.ai/), que permitem que os usuários criem uma página de destino personalizada com links para suas redes sociais, portfólio e outras informações relevantes.
 
 Este projeto foi desenvolvido para permitir que os usuários criem uma Página de links personalizada e interativa para si ou sua empresa. O objetivo é fornecer uma maneira fácil e eficaz de compartilhar todas as suas informações importantes em um só lugar.
@@ -8,6 +11,13 @@ Com este projeto, você pode criar sua própria Página de links personalizada, 
 
 Para começar a usar esta plataforma, basta se inscrever e criar sua própria página de links.
 
+## Desktop
+
+<img src="https://user-images.githubusercontent.com/52705622/228025020-dc01cbc4-d078-4241-8c8d-42cf8780db95.png" />
+
+## Mobile
+
+<img src="https://user-images.githubusercontent.com/52705622/228029096-65036876-c075-4d77-bf94-a507af75e933.png" />
 
 ## Tecnologias
 
