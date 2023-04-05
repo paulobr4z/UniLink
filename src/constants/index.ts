@@ -8,3 +8,5 @@ export const UPDATE_LINK = (link_id?:string) => `/account/link/${link_id}`;
 export const UPDATE_USERNAME = '/account/update/username';
 export const CREATE_LINK = '/account/link';
 export const DELETE_LINK = (link_id?:string) => `/account/link/${link_id}`;
+export const VERIFY_TOKEN = "http://localhost:3000/api/token";
+

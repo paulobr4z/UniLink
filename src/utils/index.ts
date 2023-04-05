@@ -1,5 +1,3 @@
-import { useRouter } from "next/router";
-
 export function isValidUrl(url:string) {
   try {
     new URL(url);

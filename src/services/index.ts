@@ -11,7 +11,8 @@ import {
   UPDATE_LINK,
   UPDATE_USERNAME,
   CREATE_LINK,
-  DELETE_LINK
+  DELETE_LINK,
+  VERIFY_TOKEN
 } from "../constants";
 
 async function createUser(userInfo: any) {
@@ -162,6 +163,23 @@ async function deleteLink(link_id?: string) {
   }
 }
 
+async function testeToken(token: string, secret: string) {
+  try {
+    const response = await fetch(
+      "/api/token",{
+        method: "POST",
+        body: JSON.stringify({token, secret})
+      }
+    );
+
+    const data = await response.json();    
+
+    return data;
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export {
   createUser,
   getUserByUsername,
@@ -172,5 +190,6 @@ export {
   updateLinkByID,
   updateUsernameById,
   createLink,
-  deleteLink
+  deleteLink,
+  testeToken
 }

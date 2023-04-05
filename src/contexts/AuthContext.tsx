@@ -4,7 +4,7 @@ import { setCookie, parseCookies, destroyCookie } from 'nookies';
 import { api } from "../services/api";
 import { AxiosError } from "axios";
 import { IUser } from "../types/user";
-import { getAccountByID } from "../services";
+import { getAccountByID, testeToken } from "../services";
 
 interface ICredential {
   email: string;
@@ -74,10 +74,20 @@ export function AuthProvider({ children }: IAuthProvider) {
   }
 
   useEffect(() => {
+    const { 'singlelink.token': token } = parseCookies();
     const { 'singlelink.userID': userID } = parseCookies();
     
     async function onGetUser() {
+      const response = await testeToken(token, `${process.env.NEXT_PUBLIC_SECRET_JWT}`);
+
+      console.log(token)
+
+      if (!response) {
+        signOut();
+      }
+
       const user = await getAccountByID(userID);
+
       setUser(user);
     }
 
