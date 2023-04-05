@@ -65,7 +65,7 @@ export function AuthProvider({ children }: IAuthProvider) {
     destroyCookie(undefined, 'singlelink.token');
     destroyCookie(undefined, 'singlelink.userID');
   
-    Router.push('/');
+    Router.push('/login');
 
     setTimeout(() => {
       
@@ -80,9 +80,7 @@ export function AuthProvider({ children }: IAuthProvider) {
     async function onGetUser() {
       const response = await testeToken(token, `${process.env.NEXT_PUBLIC_SECRET_JWT}`);
 
-      console.log(token)
-
-      if (!response) {
+      if (token && !response) {
         signOut();
       }
 

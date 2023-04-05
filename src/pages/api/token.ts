@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-export default function (request: NextApiRequest , response: NextApiResponse) {
+export default function verifyToken(request: NextApiRequest , response: NextApiResponse) {
   const { token, secret } = JSON.parse(request.body);
 
   try {
@@ -11,4 +11,3 @@ export default function (request: NextApiRequest , response: NextApiResponse) {
     response.status(400).json({ error })
   }
 }
-
