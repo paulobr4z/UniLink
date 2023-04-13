@@ -82,4 +82,15 @@ export const ContentLoginContainer = styled.div`
       border: none;
     }
   }
+
+  .forgot-password {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    p {
+      width: fit-content;
+      text-align: initial;
+    }
+  }
 `;

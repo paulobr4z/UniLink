@@ -1,7 +1,7 @@
 import { GetServerSideProps } from 'next';
 import Head from 'next/head'
 import { parseCookies } from 'nookies';
-import { ContentLogin } from '../contents/login'
+import { ContentLogin } from '../../contents/login'
 
 export default function Login() {
   return (

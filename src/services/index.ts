@@ -12,10 +12,12 @@ import {
   UPDATE_USERNAME,
   CREATE_LINK,
   DELETE_LINK,
-  VERIFY_TOKEN
+  VERIFY_TOKEN,
+  VALIDATE_TOKEN,
+  FORGOT_PASSWORD
 } from "../constants";
 
-async function createUser(userInfo: any) {
+export async function createUser(userInfo: any) {
   try {
     const response = await api.post(CREATE_USER, userInfo);
     
@@ -29,7 +31,7 @@ async function createUser(userInfo: any) {
   }
 }
 
-async function getUserByUsername(username: string) {
+export async function getUserByUsername(username: string) {
   try {
     const response = await api.get(GET_USER_BY_USERNAME(username));
     
@@ -41,7 +43,7 @@ async function getUserByUsername(username: string) {
   }
 }
 
-async function checkUsernameAlreadyExists(username: string) {
+export async function checkUsernameAlreadyExists(username: string) {
   try {
     const response = await api.get(CHECK_USERNAME_ALREADY_EXISTS(username));
     
@@ -53,7 +55,7 @@ async function checkUsernameAlreadyExists(username: string) {
   }
 }
 
-async function getAccountByID(id: string) {
+export async function getAccountByID(id: string) {
   if (id) {
     try {
       const response = await api.get(GET_ACCOUNT_BY_ID(id));
@@ -67,7 +69,7 @@ async function getAccountByID(id: string) {
   }
 }
 
-async function uploadFile(file: any) {
+export async function uploadFile(file: any) {
   try {
     const response = await api.post(UPLOAD_FILE, file);
     
@@ -79,7 +81,7 @@ async function uploadFile(file: any) {
   }
 }
 
-async function updateUser({
+export async function updateUser({
   user_id,
   field,
   value
@@ -95,7 +97,7 @@ async function updateUser({
   }
 }
 
-async function updateLinkByID({
+export async function updateLinkByID({
   link_id,
   field,
   value
@@ -113,7 +115,7 @@ async function updateLinkByID({
   }
 }
 
-async function updateUsernameById({
+export async function updateUsernameById({
   user_id,
   value
 }: IUpdateUsernameById) {
@@ -130,7 +132,7 @@ async function updateUsernameById({
   }
 }
 
-async function createLink({
+export async function createLink({
   user_id,
   title,
   url
@@ -148,7 +150,7 @@ async function createLink({
   }
 }
 
-async function deleteLink(link_id?: string) {
+export async function deleteLink(link_id?: string) {
   try {
     const response = await api.delete(DELETE_LINK(link_id));
     
@@ -163,7 +165,7 @@ async function deleteLink(link_id?: string) {
   }
 }
 
-async function testeToken(token: string, secret: string) {
+export async function testeToken(token: string, secret: string) {
   try {
     const response = await fetch(
       "/api/token",{
@@ -180,16 +182,30 @@ async function testeToken(token: string, secret: string) {
   }
 }
 
-export {
-  createUser,
-  getUserByUsername,
-  getAccountByID,
-  uploadFile,
-  updateUser,
-  checkUsernameAlreadyExists,
-  updateLinkByID,
-  updateUsernameById,
-  createLink,
-  deleteLink,
-  testeToken
+interface IforgotPassword {
+  email: string
+}
+
+export async function forgotPassword(email: IforgotPassword) {
+  try {
+    const response = await api.post(FORGOT_PASSWORD, email);
+    
+    const { data } = response;
+
+    return data;
+  } catch (error) {
+    throw Error();
+  }
+}
+
+export async function validateToken(token: string) {
+  try {
+    const response = await api.post(VALIDATE_TOKEN, {token});
+    
+    const { data } = response;
+
+    return data;
+  } catch (error) {
+    throw Error();
+  }
 }

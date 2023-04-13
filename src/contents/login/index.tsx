@@ -67,7 +67,10 @@ export function ContentLogin() {
             isLoading={isLoading}
           />
         </form>
-        <p>Don&apos;t have an account? <Link href="/signup">Sign up.</Link></p>
+        <div className="forgot-password">
+          <p>Don&apos;t have an account? <Link href="/signup">Sign up.</Link></p>
+          <p><Link href="/login/forgot_password">Forgot password?</Link></p>
+        </div>
       </div>
     </ContentLoginContainer>
   )
