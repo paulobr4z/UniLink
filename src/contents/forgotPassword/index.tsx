@@ -54,7 +54,7 @@ export function ContentForgotPassword() {
             <main>
               <p>
                 Enter the email address associated with your account, 
-                and we'll email you a link to reset your password.
+                and we&apos;ll email you a link to reset your password.
               </p>
               <form onSubmit={handleSubmit(handleSendResetLink)}>
                 <input

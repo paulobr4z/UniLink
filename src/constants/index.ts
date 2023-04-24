@@ -11,4 +11,5 @@ export const DELETE_LINK = (link_id?:string) => `/account/link/${link_id}`;
 export const VERIFY_TOKEN = "/api/token";
 export const VALIDATE_TOKEN = "/login/validate_token";
 export const FORGOT_PASSWORD = "/login/forgot_password";
+export const STARTSERVER = "/start";
 

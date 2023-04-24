@@ -14,7 +14,8 @@ import {
   DELETE_LINK,
   VERIFY_TOKEN,
   VALIDATE_TOKEN,
-  FORGOT_PASSWORD
+  FORGOT_PASSWORD,
+  STARTSERVER
 } from "../constants";
 
 export async function createUser(userInfo: any) {
@@ -207,5 +208,18 @@ export async function validateToken(token: string) {
     return data;
   } catch (error) {
     throw Error();
+  }
+}
+
+
+export async function startServer() {
+  try {
+    const response = await api.get(STARTSERVER);
+    
+    const { data } = response;
+
+    return data;
+  } catch (error) {
+    console.log(error);
   }
 }

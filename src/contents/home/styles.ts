@@ -12,11 +12,15 @@ export const ContentHomeContainer = styled.div`
   }
 
   header {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
     height: 80px;
+    background-color: #f5f5f5;
+    z-index: 9;
+
 
     .logo {
       display: flex;

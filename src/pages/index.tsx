@@ -1,8 +1,20 @@
 import { GetServerSideProps } from 'next';
 import Head from 'next/head'
 import { ContentHome } from '../contents/home'
+import { useEffect } from 'react';
+import { startServer } from '../services';
 
 export default function Home() {
+  
+  useEffect(() => {
+    async function onStartServer() {
+      const response = await startServer();
+      console.log(response);
+    }
+
+    onStartServer();
+  }, [])
+
   return (
     <>
       <Head>
