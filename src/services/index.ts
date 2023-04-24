@@ -220,6 +220,6 @@ export async function startServer() {
 
     return data;
   } catch (error) {
-    console.log(error);
+    throw Error();
   }
 }

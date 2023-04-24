@@ -13,7 +13,7 @@ interface ILink {
 }
 
 export function UserLink({
-  title = 'new link',
+  title = "",
   link_url = "#",
   bg_color_link = '#121212',
   text_color_link = '#ffffff',

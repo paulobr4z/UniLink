@@ -31,14 +31,14 @@ export function ContentAccount({ host }: IContentAccount) {
     
     const { linkId } = await createLink({
       user_id: update._id,
-      title: "New link",
+      title: "",
       url: ""
     });
     
     const newLink:ILinks = {
       _id: linkId,
       is_active: true,
-      title: "New link",
+      title: "",
       url: ""
     }
     
@@ -158,7 +158,7 @@ export function ContentAccount({ host }: IContentAccount) {
           value: color
         })
         
-        toast.success(`${formatFieldName(field)} updated successfully`);        
+        // toast.success(`${formatFieldName(field)} updated successfully`);
       } catch (error) {
         toast.error(`${error}, try again!`);      
       }

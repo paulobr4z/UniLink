@@ -8,8 +8,12 @@ export default function Home() {
   
   useEffect(() => {
     async function onStartServer() {
-      const response = await startServer();
-      console.log(response);
+      try {
+        const response = await startServer();
+        console.log(response);
+      } catch (error) {
+        console.log("try again later");        
+      }
     }
 
     onStartServer();
