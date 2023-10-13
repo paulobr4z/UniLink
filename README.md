@@ -11,6 +11,10 @@ Com este projeto, você pode criar sua própria Página de links personalizada, 
 
 Para começar a usar esta plataforma, basta se inscrever e criar sua própria página de links.
 
+## Dashboard
+
+<img src="https://raw.githubusercontent.com/paulobr4z/UniLink/main/public/images/dashboard.png" />
+
 ## Desktop
 
 <img src="https://user-images.githubusercontent.com/52705622/228025020-dc01cbc4-d078-4241-8c8d-42cf8780db95.png" />
